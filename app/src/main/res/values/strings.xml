@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Transaction App</string>
+
+    <string name="title_view_transaction">View Transactions</string>
+    <string name="title_transaction_details">Transactions details</string>
+    <string name="menu_transaction_refresh">Refresh Transactions</string>
+
+    <string name="transaction_available">Available</string>
+    <string name="transaction_balance">Balance</string>
+    <string name="transaction_bsb">BSB</string>
+    <string name="transaction_account">Account</string>
+    <string name="transaction_pending">Pending</string>
+
+    <!-- error -->
+    <string name="transaction_load_error">Unable to load transactions</string>
+    <string name="transaction_unknown_error">Unknown error occurred</string>
+
+    <string name="dollar_format">$%1s</string>
+</resources>

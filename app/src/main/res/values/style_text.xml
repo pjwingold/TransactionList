@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text.Body.NORMAL" parent="Text.Body">
+        <item name="android:textColor">@color/color_text_light</item>
+    </style>
+
+    <style name="Text.Body.TITLE" parent="Text.Body">
+        <item name="android:textColor">@color/color_text_dark</item>
+    </style>
+
+    <style name="Header.H5.Bold">
+        <item name="android:textAppearance">@style/TextAppearance.Bold</item>
+    </style>
+
+</resources>

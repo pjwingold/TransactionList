@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_trans"
+    app:startDestination="@id/account_transaction_fragment">
+
+    <fragment
+        android:id="@+id/account_transaction_fragment"
+        android:name="au.com.pjwin.transaction_list.ui.AccountTransactionFragment"
+        android:label="AccountTransactionFragment"
+        tools:layout="@layout/fragment_transaction_list">
+
+        <action
+            android:id="@+id/start_transaction_details_fragment"
+            app:destination="@id/account_transaction_details_fragment">
+
+            <argument
+                android:name="transaction"
+                app:argType="au.com.pjwin.transaction_list.model.Transaction" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/account_transaction_details_fragment"
+        android:name="au.com.pjwin.transaction_list.ui.AccountTransactionDetailsFragment"
+        android:label="AccountTransactionDetailsFragment"
+        tools:layout="@layout/fragment_transaction_details">
+
+        <argument
+            android:name="transaction"
+            app:argType="au.com.pjwin.transaction_list.model.Transaction" />
+    </fragment>
+
+</navigation>

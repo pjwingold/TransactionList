@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="account"
+            type="au.com.pjwin.transaction_list.model.Account" />
+
+        <variable
+            name="pendingTotal"
+            type="java.math.BigDecimal" />
+
+        <import type="au.com.pjwin.transaction_list.util.TransactionUtilKt" />
+    </data>
+
+    <LinearLayout
+        style="@style/PageContainer"
+        app:visibility="@{account != null}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/ContentPadded"
+            android:paddingStart="@dimen/content_spacing_large"
+            android:paddingEnd="@dimen/content_spacing_large"
+            android:paddingBottom="@dimen/content_spacing">
+
+            <TextView
+                android:id="@+id/label_available"
+                style="@style/Text.Body.TITLE"
+                android:text="@string/transaction_available"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_available"
+                style="@style/Header.H5.Bold"
+                android:text='@{TransactionUtilKt.currencyFormat(account.available)}'
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_available"
+                tools:text="$226.76" />
+
+            <TextView
+                android:id="@+id/label_balance"
+                style="@style/Text.Body.NORMAL"
+                android:text="@string/transaction_balance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_available" />
+
+            <TextView
+                android:id="@+id/text_balance"
+                style="@style/Text.Body.TITLE"
+                android:layout_marginStart="@dimen/content_spacing"
+                android:text='@{TransactionUtilKt.currencyFormat(account.balance)}'
+                app:layout_constraintStart_toEndOf="@id/label_balance"
+                app:layout_constraintTop_toTopOf="@id/label_balance"
+                tools:text="$246.70" />
+
+            <TextView
+                android:id="@+id/label_pending"
+                style="@style/Text.Body.NORMAL"
+                android:text="@string/transaction_pending"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_balance" />
+
+            <TextView
+                android:id="@+id/text_pending"
+                style="@style/Text.Body.TITLE"
+                android:layout_marginStart="@dimen/content_spacing"
+                android:text='@{TransactionUtilKt.currencyFormat(pendingTotal)}'
+                app:layout_constraintStart_toEndOf="@id/label_balance"
+                app:layout_constraintTop_toBottomOf="@id/label_balance"
+                tools:text="-$137.50" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            style="@style/SectionSeparator"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <LinearLayout
+            style="@style/SectionLayout"
+            android:paddingStart="@dimen/content_spacing_large"
+            android:paddingEnd="@dimen/content_spacing_large">
+
+            <TextView
+                style="@style/Text.Body.TITLE"
+                android:text="@string/transaction_bsb" />
+
+            <TextView
+                style="@style/Text.Body.NORMAL"
+                android:layout_marginStart="@dimen/content_spacing"
+                android:text="@{account.bsb}"
+                tools:text="062005" />
+
+            <TextView
+                style="@style/Text.Body.TITLE"
+                android:layout_marginStart="@dimen/content_spacing"
+                android:text="@string/transaction_account" />
+
+            <TextView
+                style="@style/Text.Body.NORMAL"
+                android:layout_marginStart="@dimen/content_spacing"
+                android:text="@{account.accountNumber}"
+                tools:text="1709 57888" />
+        </LinearLayout>
+
+        <View style="@style/SectionSeparator" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/trans_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/content_spacing"
+            android:paddingEnd="@dimen/content_spacing"
+            android:paddingBottom="@dimen/content_spacing"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </LinearLayout>
+</layout>

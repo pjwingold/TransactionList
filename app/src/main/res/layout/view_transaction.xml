@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transaction"
+            type="au.com.pjwin.transaction_list.model.Transaction" />
+
+        <import type="au.com.pjwin.transaction_list.model.TransactionCategory" />
+
+        <import type="au.com.pjwin.transaction_list.R" />
+
+        <import type="au.com.pjwin.transaction_list.util.TransactionUtilKt" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/ContentPadded"
+        android:paddingBottom="@dimen/content_spacing">
+
+        <ImageView
+            android:id="@+id/icon"
+            style="@style/WrapContentLayout"
+            android:importantForAccessibility="no"
+            android:src="@{transaction.category.icon}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/icon_category_business" />
+
+        <TextView
+            android:id="@+id/text_body"
+            style="@style/Text.Body"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/content_spacing"
+            android:layout_marginEnd="@dimen/content_spacing"
+            android:textColor="@color/color_text_light"
+            app:html="@{TransactionUtilKt.formatDisplay(transaction)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/text_amount"
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="PENDING:Setapp (via Paddle.Net) +440808178853 GBR" />
+
+        <TextView
+            android:id="@+id/text_amount"
+            style="@style/Text.Body.TITLE"
+            android:text='@{TransactionUtilKt.currencyFormat(transaction.amount)}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="-$14.19" />
+
+        <View
+            style="@style/SectionSeparator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_body" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
