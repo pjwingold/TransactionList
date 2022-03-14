@@ -1,10 +1,10 @@
 package au.com.pjwin.transaction_list
 
-import au.com.pjwin.commonlib.BaseApplication
+import android.app.Application
 import au.com.pjwin.commonlib.Common
 import au.com.pjwin.transaction_list.util.AppConfig
 
-open class TransactionApp : BaseApplication() {
+open class TransactionApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
